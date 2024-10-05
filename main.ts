@@ -31,10 +31,12 @@ export default class downloadPDF extends Plugin {
 								else {
 									file_path = String(selection[file].path.match(regexpath)) + String(url.match(regexfilename))
 								}
+								// @ts-ignore
 								if (!(await this.app.vault.exists(file_path))){
 									this.app.vault.createBinary(file_path, blob)
 									hä = hä.replace(regexreplace, "$1("+file_path+")")
 								}
+								// @ts-ignore
 								else if (await this.app.vault.exists(file_path)){
 									hä = hä.replace(regexreplace, "$1("+file_path+")")
 								}
