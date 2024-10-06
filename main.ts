@@ -8,7 +8,7 @@ export default class downloadPDF extends Plugin {
 			callback: async () => {
 				var selection = this.app.vault.getMarkdownFiles();
 				const regex = /\[[^\[]*\]\((https:\/\/.*\.pdf)\)/gm;
-				const regexpath = /(\S*)\//g;
+				const regexpath = /([\S\s]*)\//g;
 				const regexfilename = /([^\/]*\.pdf)$/g;
 				const regexreplace = /(\[[^\[]*\])\(https:\/\/.*\.pdf\)/;
 				for(const file in selection){
@@ -25,7 +25,7 @@ export default class downloadPDF extends Plugin {
 								if (String(selection[file].path.match(regexpath)) == "null"){
 									file_path = String(url.match(regexfilename))
 								}
-								else if (String(url.match(regexfilename))) {
+								else if (String(url.match(regexfilename)) == "null") {
 									throw("nofilename valid")
 								}
 								else {
@@ -34,11 +34,11 @@ export default class downloadPDF extends Plugin {
 								// @ts-ignore
 								if (!(await this.app.vault.exists(file_path))){
 									this.app.vault.createBinary(file_path, blob)
-									hä = hä.replace(regexreplace, "$1("+file_path+")")
+									hä = hä.replace(regexreplace, "$1("+file_path.replace(/ /g, "%20")+")")
 								}
 								// @ts-ignore
 								else if (await this.app.vault.exists(file_path)){
-									hä = hä.replace(regexreplace, "$1("+file_path+")")
+									hä = hä.replace(regexreplace, "$1("+file_path.replace(/ /g, "%20")+")")
 								}
 						   })
 							.catch(e => {
