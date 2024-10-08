@@ -6,7 +6,7 @@ export default class downloadPDF extends Plugin {
 			id: "download-PDF-files-in-all-documents",
 			name: "download PDF files in all documents",
 			callback: async () => {
-				var selection = this.app.vault.getMarkdownFiles();
+				let selection = this.app.vault.getMarkdownFiles();
 				const regex = /\[[^\[]*\]\((https:\/\/.*\.pdf)\)/gm;
 				const regexpath = /([\S\s]*)\//g;
 				const regexfilename = /([^\/]*\.pdf)$/g;
@@ -21,7 +21,7 @@ export default class downloadPDF extends Plugin {
 							return requestUrl({url:url})
 							.then( res => res.arrayBuffer )
 							.then(async blob => {
-								var file_path = ""
+								let file_path = ""
 								if (String(selection[file].path.match(regexpath)) == "null"){
 									file_path = String(url.match(regexfilename))
 								}
