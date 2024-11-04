@@ -5,7 +5,6 @@
 	"minAppVersion": "0.15.0",
 	"description": "Allows you to download all included PDF files",
 	"author": "Frieda",
-	"authorUrl": "https://frieda-universe.de",
-	"fundingUrl": "",
+	"authorUrl": "https://www.frieda-universe.de",
 	"isDesktopOnly": false
 }
