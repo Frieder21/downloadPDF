@@ -1,7 +1,7 @@
 {
 	"id": "downloadpdf",
 	"name": "downloadPDF",
-	"version": "1.2.4",
+	"version": "1.2.5",
 	"minAppVersion": "0.15.0",
 	"description": "Allows you to download all included PDF files",
 	"author": "Frieda",
